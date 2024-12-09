@@ -1,4 +1,4 @@
-# Visitor Tracking System Documentation
+# Visitor Tracking API documentation
 
 ## Project Overview
 A lightweight, self-hosted visitor tracking solution using Python socket programming and MySQL, designed for small to medium-sized websites.
