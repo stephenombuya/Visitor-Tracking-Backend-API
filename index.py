@@ -10,20 +10,15 @@ import hashlib
 import os
 
 class VisitorTrackingServer:
-    def __init__(self, host='localhost', port=8000, db_config=None, secret_key=None):
+    def __init__(self):
         """
-        Initialize the server with host, port, database configuration, and a secret key.
+        Initialize the server with configurations from config.py.
         """
-        self.host = host
-        self.port = port
-        self.secret_key = secret_key or hashlib.sha256(os.urandom(60)).hexdigest()
+        self.host = config.SERVER_CONFIG['host']
+        self.port = config.SERVER_CONFIG['port']
+        self.secret_key = config.SECRET_KEY
 
-        self.db_config = db_config or {
-            'host': 'localhost',
-            'user': 'your_username',
-            'password': 'your_password',
-            'database': 'visitor_tracking_db'
-        }
+        self.db_config = config.DB_CONFIG
 
         # Initialize the database connection pool
         self.connection_pool = mysql.connector.pooling.MySQLConnectionPool(
